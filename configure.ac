@@ -44,7 +44,7 @@ PKG_CHECK_MODULES([GIO_UNIX], [gio-unix-2.0               >= 2.30.0])
 PKG_CHECK_MODULES([GLIB],     [glib-2.0                   >= 2.30.0])
 PKG_CHECK_MODULES([GOBJECT],  [gobject-2.0                >= 2.30.0])
 PKG_CHECK_MODULES([DBUS],     [dbus-1                     >= 1.4.10])
-PKG_CHECK_MODULES([SYSTEMD],  [libsystemd-daemon          >= 37    ])
+PKG_CHECK_MODULES([SYSTEMD],  [libsystemd                 >= 37    ])
 PKG_CHECK_MODULES([PCL],      [persistence_client_library >= 0.6.0 ])
 
 # Choose NodeStateMachine
