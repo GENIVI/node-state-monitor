@@ -1801,14 +1801,17 @@ static NsmErrorStatus_e NSM__enOnHandleRegisterLifecycleClient(const gchar *sBus
     else
     {
       enRetVal = NsmErrorStatus_Dbus;
-      DLT_LOG(NsmContext, DLT_LOG_INFO, DLT_STRING("NSM: Failed to register new lifecycle consumer. D-Bus error."),
-                                        DLT_STRING(" Bus name: "),           DLT_STRING(sBusName                 ),
-                                        DLT_STRING(" Obj name: "),           DLT_STRING(sObjName                 ),
-                                        DLT_STRING(" Timeout: " ),           DLT_UINT(  u32TimeoutMs             ),
-                                        DLT_STRING(" Registered mode(s): "), DLT_INT(   u32ShutdownMode          ),
-                                        DLT_STRING(" Error: "),              DLT_STRING(pError->message          ));
-
-      g_error_free(pError);
+      if(pError != NULL)
+      {
+        DLT_LOG(NsmContext, DLT_LOG_INFO, DLT_STRING("NSM: Failed to register new lifecycle consumer. D-Bus error."),
+                                          DLT_STRING(" Bus name: "),           DLT_STRING(sBusName                 ),
+                                          DLT_STRING(" Obj name: "),           DLT_STRING(sObjName                 ),
+                                          DLT_STRING(" Timeout: " ),           DLT_UINT(  u32TimeoutMs             ),
+                                          DLT_STRING(" Registered mode(s): "), DLT_INT(   u32ShutdownMode          ),
+                                          DLT_STRING(" Error: "),              DLT_STRING(pError->message          ));
+        g_error_free(pError);
+        pError = NULL;
+      }
     }
   }
   else
