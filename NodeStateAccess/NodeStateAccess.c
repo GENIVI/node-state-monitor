@@ -844,7 +844,7 @@ static gboolean NSMA__boOnHandleLifecycleRequestComplete(NodeStateConsumer     *
   NsmErrorStatus_e enErrorStatus = NsmErrorStatus_NotSet;
 
   /* Check if the client is the one, we are waiting for. */
-  if(NSMA__pCurrentLcConsumer == (NodeStateLifeCycleConsumer*) u32RequestId)
+  if(u32RequestId == (guint) NSMA__pCurrentLcConsumer)
   {
     enErrorStatus = NsmErrorStatus_Ok;
     /* The client is the expected one. Pass the status to the NSM. */
